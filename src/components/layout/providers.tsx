@@ -13,13 +13,7 @@ export default function HeuteProviders({ children }: { children: React.ReactNode
 }
 
 const theme = createTheme({
-    components: {
-        MuiDivider: {
-            styleOverrides: {
-                root: {
-                    borderColor: "#ff0000",
-                },
-            },
-        },
-    },
+    palette: {
+        mode: "dark",
+    }
 });

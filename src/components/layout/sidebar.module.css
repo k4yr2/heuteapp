@@ -1,5 +1,6 @@
 .body {
     display: flex;
+    border-right: 1px solid rgb(139, 139, 139);
 }
 
 .container {
