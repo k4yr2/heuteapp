@@ -1,6 +1,6 @@
 import styles from './sidebar.module.css';
 
-export default function Sidebar() {
+export default function HeuteSidebar() {
   return (
     <div id="heute-sidebar" className={styles.sidebar}>
 
