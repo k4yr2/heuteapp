@@ -26,16 +26,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#heute-sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 200px;
-  background: var(--background);
-  border-right: 1px solid var(--foreground);
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
