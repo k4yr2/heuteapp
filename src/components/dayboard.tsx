@@ -1,9 +1,17 @@
-import { forwardRef, useEffect } from "react";
+import { createContext, createRef, forwardRef, useEffect } from "react";
 import styles from "./dayboard.module.css";
 
 var mounted = false;
 
+const context = createContext<DayboardContext | null>(null);
+
+type DayboardContext = {
+    panelRef : React.RefObject<HTMLDivElement | null>;
+};
+
 export default function Dayboard() {
+    const panelRef = createRef<HTMLDivElement>();
+
     useEffect(() => {
         if (!mounted) {
             mounted = true;
@@ -14,8 +22,10 @@ export default function Dayboard() {
     }, [])
 
     return (
-        <div className={styles.body}>
-            <DayboardLayout />
+        <div ref={panelRef} className={styles.body}>
+            <context.Provider value={{ panelRef: panelRef}}>
+                <DayboardLayout />
+            </context.Provider>
         </div>
     );
 }
