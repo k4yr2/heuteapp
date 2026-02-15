@@ -23,6 +23,26 @@ export default function Dayboard() {
         }
     }, []);
 
+    const [size, setSize] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        const el = panelRef.current;
+        if (!el) return;
+
+        const observer = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                setSize({
+                width: entry.contentRect.width,
+                height: entry.contentRect.height,
+                });
+            }
+        });
+
+        observer.observe(el);
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <div ref={panelRef} className={styles.body}>
             {ready && (
