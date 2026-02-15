@@ -1,7 +1,9 @@
 import { forwardRef } from "react";
 
 export default function Dayboard() {
-
+    return (
+        <DayboardLayout />
+    );
 }
 
 const DayboardLayout = forwardRef<HTMLDivElement>(

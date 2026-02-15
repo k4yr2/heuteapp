@@ -1,7 +1,9 @@
-export default function Dayboard() {
+import Dayboard from "@/src/components/dayboard";
+
+export default function DayboardPage() {
   return (
     <div>
-      <h1>Dayboard</h1>
+      <Dayboard />
     </div>
   );
 }
