@@ -105,7 +105,7 @@ const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
             return () => {
                 observer.disconnect();
             };
-        }, []);
+        }, [context.panelRef, props.w, props.h]);
 
         return (
             <div ref={mergeRefs(forwardedRef, ref)} className={styles.grid}>
