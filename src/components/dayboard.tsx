@@ -58,7 +58,8 @@ const DayboardLayout = forwardRef<HTMLDivElement>(
     function DayboardLayout(props, ref) {
         return (
             <div ref={ref} className={styles.layout}>
-                <DayboardGrid w={12} h={3} />
+                <DayboardGrid w={18} h={4} />
+                <DayboardGrid w={18} h={4} />
             </div>
         );
     }
@@ -80,23 +81,23 @@ const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
                 if(!context.panelRef.current) return;
                 if(!innerRef.current) return;
 
-                const panelElm = context.panelRef.current;
-                const panelSize = panelElm.getBoundingClientRect();
-                const panelWidth = panelSize.width;
-                const panelHeight = panelSize.height;
+                const gridElm = innerRef.current;
+                const gridSize = gridElm.getBoundingClientRect();
+                const gridWidth = gridSize.width;
+                const gridHeight = gridSize.height;
 
                 const style = innerRef.current.style;
-                const possibleWidth = Math.floor(panelWidth / props.w);
-                const possibleHeight = Math.floor(panelHeight / props.h);
+                const possibleWidth = gridWidth / props.w;
+                const possibleHeight = gridHeight / props.h;
                 const fieldSize = Math.min(possibleWidth, possibleHeight);
 
-                const gridGap = Math.floor(fieldSize * 0.1);
-                const cellSize = Math.floor(fieldSize - (gridGap));
+                const gridGap = fieldSize * 0.5;
+                const cellSize = fieldSize - (gridGap);
 
                 style.setProperty("--gridColumns", `${props.w}`);
                 style.setProperty("--gridRows", `${props.h}`);
-                style.setProperty("--gridGap", `${gridGap}px`);
-                style.setProperty("--cellSize", `${cellSize - (gridGap / props.w)}px`);
+                style.setProperty("--gridGap", `${Math.floor(gridGap)}px`);
+                style.setProperty("--cellSize", `${Math.floor(cellSize)}px`);
             });
 
             observer.observe(context.panelRef.current!);
