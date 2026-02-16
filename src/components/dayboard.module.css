@@ -24,6 +24,7 @@
 
 .cell {
     border: 1px solid #ccc;
+    border-radius: 20%;
     width: var(--cellSize);
     height: var(--cellSize);
     box-sizing: border-box;

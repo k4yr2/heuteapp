@@ -91,7 +91,7 @@ const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
                 const possibleHeight = gridHeight / props.h;
                 const fieldSize = Math.min(possibleWidth, possibleHeight);
 
-                const gridGap = fieldSize * 0.5;
+                const gridGap = fieldSize * 0.2;
                 const cellSize = fieldSize - (gridGap);
 
                 style.setProperty("--gridColumns", `${props.w}`);
