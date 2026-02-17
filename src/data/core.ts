@@ -8,7 +8,7 @@ export interface Rect extends Point {
     height: number;
 }
 
-export interface RectBounds extends Point {
+export interface Bounds extends Point {
     x2: number;
     y2: number;
 }
