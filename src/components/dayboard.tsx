@@ -1,7 +1,8 @@
 "use client";
-import { createContext, forwardRef, use, useContext, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from "react";
+import { createContext, forwardRef, useContext, useEffect, useRef } from "react";
 import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
+import { useReadyRef } from "../hooks";
 
 var mounted = false;
 
@@ -15,16 +16,9 @@ export default function Dayboard() {
         }
     }, [])
 
-    const panelRef = useRef<HTMLDivElement>(null);
-    const [ready, setReady] = useState(false);
+    const [panelRef, ready] = useReadyRef<HTMLDivElement>();
 
-    useLayoutEffect(() => {
-        if (panelRef.current) {
-            setReady(true);
-        }
-    }, []);
-
-    const context : DayboardContextProps = {
+    const context : DayboardRegister = {
         panelRef
     };
 
@@ -47,9 +41,9 @@ export default function Dayboard() {
 
 //
 
-const DayboardContext = createContext<DayboardContextProps | null>(null);
+const DayboardContext = createContext<DayboardRegister | null>(null);
 
-type DayboardContextProps = {
+type DayboardRegister = {
     panelRef : React.RefObject<HTMLDivElement | null>;
 };
 
