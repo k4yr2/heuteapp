@@ -4,18 +4,7 @@ import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
 
-var mounted = false;
-
 export default function Dayboard() {
-    useEffect(() => {
-        if (!mounted) {
-            mounted = true;
-        }
-        else {
-            throw new Error("Dayboard component is already mounted. This should never happen.");
-        }
-    }, [])
-
     const [panelRef, ready] = useReadyRef<HTMLDivElement>();
 
     const context : DayboardRegister = {
