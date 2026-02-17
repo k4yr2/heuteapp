@@ -5,25 +5,20 @@ import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
 
 export default function Dayboard() {
-    const [panelRef, ready] = useReadyRef<HTMLDivElement>();
+    const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
 
     const context : DayboardRegister = {
-        panelRef
+        panelRef: dayboardRef
     };
 
     return (
-        <div ref={panelRef} className={styles.body}>
-            {ready && (
+        <div ref={dayboardRef} className={styles.body}>
+            { 
+                ready &&
                 <DayboardContext.Provider value={context}>
                     <DayboardLayout />
-                    <div>
-                        {panelRef.current?.getBoundingClientRect()?.width}
-                    </div>
-                    <div>
-                        {panelRef.current?.getBoundingClientRect()?.height}
-                    </div>
                 </DayboardContext.Provider>
-            )}
+            }
         </div>
     );
 }
