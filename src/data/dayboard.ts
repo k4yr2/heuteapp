@@ -1,4 +1,4 @@
-import { HeuteObject, Bounds, GridSize, createObject, HeuteData } from "./core";
+import { HeuteObject, Bounds, GridSize, createObjectWithId, HeuteData } from "./core";
 
 export interface DayboardObject extends HeuteObject {
 }
@@ -14,10 +14,10 @@ export interface DayboardLayout extends DayboardObject {
 
 //
 
-export function createGrid(data: HeuteData<DayboardGrid>): DayboardGrid {
-    return createObject<DayboardGrid>(data);
+export function createGrid(id: string, data: HeuteData<DayboardGrid>): DayboardGrid {
+    return createObjectWithId<DayboardGrid>(id, data);
 }
 
-export function createLayout(data: HeuteData<DayboardLayout>): DayboardLayout {
-    return createObject<DayboardLayout>(data);
+export function createLayout(id: string, data: HeuteData<DayboardLayout>): DayboardLayout {
+    return createObjectWithId<DayboardLayout>(id, data);
 }

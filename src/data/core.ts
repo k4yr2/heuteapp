@@ -48,3 +48,10 @@ export function createObject<T extends HeuteObject>(data: HeuteData<T>, genId?: 
         ...data,
     } as T;
 }
+
+export function createObjectWithId<T extends HeuteObject>(id: string, data: Omit<T, "id">): T {
+    return {
+        id,
+        ...data,
+    } as T;
+}
