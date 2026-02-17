@@ -1,7 +1,6 @@
-import { Bounds, GridSize } from "./core";
+import { HeuteObject, Bounds, GridSize, createObject } from "./core";
 
-export interface DayboardObject {
-    id: string;
+export interface DayboardObject extends HeuteObject {
 }
 
 export interface DayboardGridData {
@@ -22,13 +21,6 @@ export interface DayboardLayout extends DayboardLayoutData, DayboardObject {
 }
 
 //
-
-export function createObject<T extends DayboardObject>(data: Omit<T, "id">): T {
-    return {
-        id: crypto.randomUUID(),
-        ...data,
-    } as T;
-}
 
 export function createGrid(data: DayboardGridData): DayboardGrid {
     return createObject<DayboardGrid>(data);

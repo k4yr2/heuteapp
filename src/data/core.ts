@@ -31,3 +31,16 @@ export interface Edges {
     bottom: number;
     left: number;
 }
+
+//
+
+export interface HeuteObject {
+    id: string;
+}
+
+export function createObject<T extends HeuteObject>(data: Omit<T, "id">): T {
+    return {
+        id: crypto.randomUUID(),
+        ...data,
+    } as T;
+}
