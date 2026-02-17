@@ -1,9 +1,9 @@
-import { DayboardLayout } from "@/src/data/dayboard";
+import { DayboardLayoutData } from "@/src/data/dayboard";
 
 export class HeuteDayboardLayouts {
-    #cache = new Map<string, DayboardLayout>();
+    #cache = new Map<string, DayboardLayoutData>();
 
-    public add(...layouts: DayboardLayout[]) {
+    public add(...layouts: DayboardLayoutData[]) {
         for (const layout of layouts) {
             if (this.#cache.has(layout.id)) {
                 throw new Error(`Layout with id ${layout.id} already exists`);
@@ -13,7 +13,7 @@ export class HeuteDayboardLayouts {
         }
     }
 
-    public get(id: string): DayboardLayout | undefined {
+    public get(id: string): DayboardLayoutData | undefined {
         return this.#cache.get(id);
     }
 
@@ -21,7 +21,7 @@ export class HeuteDayboardLayouts {
         return this.#cache.delete(id);
     }
 
-    public list(): DayboardLayout[] {
+    public list(): DayboardLayoutData[] {
         return Array.from(this.#cache.values());
     }
 }

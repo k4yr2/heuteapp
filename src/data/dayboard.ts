@@ -1,27 +1,27 @@
 import { HeuteObject, Bounds, GridSize, createObjectWithId, HeuteData } from "./core";
 
-export interface DayboardObject extends HeuteObject {
+export interface DayboardData extends HeuteObject {
 }
 
-export interface DayboardGrid extends DayboardObject {
+export interface DayboardGridData extends DayboardData {
     size: GridSize;
     bounds: Bounds;
 }
 
-export interface DayboardLayout extends DayboardObject {
-    grids: DayboardGrid[];
+export interface DayboardLayoutData extends DayboardData {
+    grids: DayboardGridData[];
 }
 
 //
 
-export function createGrid(id: string, data: HeuteData<DayboardGrid>): DayboardGrid {
-    return createObjectWithId<DayboardGrid>(id, data);
+export function createGrid(id: string, data: HeuteData<DayboardGridData>): DayboardGridData {
+    return createObjectWithId<DayboardGridData>(id, data);
 }
 
-export function createLayout(id: string, data: HeuteData<DayboardLayout>): DayboardLayout {
-    const layout = createObjectWithId<DayboardLayout>(id, data);
+export function createLayout(id: string, data: HeuteData<DayboardLayoutData>): DayboardLayoutData {
+    const layout = createObjectWithId<DayboardLayoutData>(id, data);
     const ids = new Set<string>();
-    
+
     for (const grid of layout.grids) {
         if (ids.has(grid.id)) {
             throw new Error(`Layout ${id} has duplicate grid id: ${grid.id}`);
