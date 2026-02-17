@@ -11,6 +11,8 @@ class HeuteApp {
     }
 }
 
+export const heuteApp = new HeuteApp();
+
 class HeuteDayboard {
     #layouts = new HeuteDayboardLayouts();
 
