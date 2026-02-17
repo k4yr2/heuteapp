@@ -3,7 +3,7 @@ import { createContext, forwardRef, useContext, useEffect, useRef } from "react"
 import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
-import { heuteApp } from "../app";
+import { heuteApp } from "@/src/heute/app";
 
 export default function Dayboard() {
     const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
