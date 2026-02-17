@@ -1,12 +1,12 @@
-interface DayboardObject {
+export interface DayboardObject {
     id: string;
 }
 
-interface DayboardGrid extends DayboardObject {
+export interface DayboardGrid extends DayboardObject {
     width: number;
     height: number;
 }
 
-interface DayboardLayout extends DayboardObject {
+export interface DayboardLayout extends DayboardObject {
     grids: DayboardGrid[];
 }
