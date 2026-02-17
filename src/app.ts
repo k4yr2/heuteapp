@@ -25,12 +25,14 @@ class HeuteDayboard {
 class HeuteDayboardLayouts {
     #cache = new Map<string, DayboardLayout>();
 
-    public add(layout: DayboardLayout) {
-        if (this.#cache.has(layout.id)) {
-            throw new Error(`Layout with id ${layout.id} already exists`);
-        }
+    public add(...layouts: DayboardLayout[]) {
+        for (const layout of layouts) {
+            if (this.#cache.has(layout.id)) {
+                throw new Error(`Layout with id ${layout.id} already exists`);
+            }
 
-        this.#cache.set(layout.id, layout);
+            this.#cache.set(layout.id, layout);
+        }
     }
 
     public get(id: string): DayboardLayout | undefined {
