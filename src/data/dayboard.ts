@@ -1,13 +1,12 @@
-import { Bounds } from "./core";
+import { Bounds, GridSize } from "./core";
 
 export interface DayboardObject {
     id: string;
 }
 
 export interface DayboardGridData {
-    width: number;
-    height: number;
-    position: Bounds;
+    size: GridSize;
+    bounds: Bounds;
 }
 
 export interface DayboardLayoutData {

@@ -8,7 +8,7 @@ export interface Size {
     height: number;
 }
 
-export interface Span {
+export interface GridSize {
     cols: number;
     rows: number;
 }
