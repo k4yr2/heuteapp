@@ -3,6 +3,7 @@ import { createContext, forwardRef, useContext, useEffect, useRef } from "react"
 import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
+import { heuteApp } from "../app";
 
 export default function Dayboard() {
     const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
@@ -43,6 +44,7 @@ const DayboardLayout = forwardRef<HTMLDivElement, DayboardLayoutProps>(
         });
 
         const context = useContext(DayboardContext)!;
+        const layout = heuteApp.dayboard.layouts.get("default");
 
         useEffect(() => {
             context.dayboardLayout = register.current;
@@ -50,8 +52,11 @@ const DayboardLayout = forwardRef<HTMLDivElement, DayboardLayoutProps>(
 
         return (
             <div ref={mergeRefs(forwardedRef, ref)} className={styles.layout}>
-                <DayboardGrid w={18} h={4} />
-                <DayboardGrid w={18} h={4} />
+                {
+                    layout?.grids.map((grid) => (
+                        <DayboardGrid key={grid.id} w={grid.size.cols} h={grid.size.rows} />
+                    ))
+                }
             </div>
         );
     }
