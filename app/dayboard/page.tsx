@@ -1,10 +1,13 @@
 import Dayboard from "@/src/components/dayboard";
 import styles from "./page.module.css";
+import { heuteApp } from "@/src/heute/app";
 
 export default function DayboardPage() {
+  const layout = heuteApp.dayboard.layouts.get("default")!;
+
   return (
     <div className={styles.body}>
-      <Dayboard />
+      <Dayboard data={{ layout }} />
     </div>
   );
 }

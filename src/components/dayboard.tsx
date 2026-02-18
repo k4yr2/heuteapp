@@ -3,10 +3,9 @@ import { createContext, forwardRef, useContext, useEffect, useRef } from "react"
 import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
-import { heuteApp } from "@/src/heute/app";
-import { DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
+import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
 
-export default function Dayboard() {
+export default function Dayboard(props: DayboardProps) {
     const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
 
     const register = useRef<DayboardRegister>({
@@ -14,7 +13,7 @@ export default function Dayboard() {
         dayboardLayout: null,
     });
         
-    const layout = heuteApp.dayboard.layouts.get("default")!;
+    const layout = props.data.layout;
 
     return (
         <div ref={dayboardRef} className={styles.body}>
@@ -26,6 +25,10 @@ export default function Dayboard() {
             }
         </div>
     );
+}
+
+interface DayboardProps {
+    data: DayboardData;
 }
 
 //
