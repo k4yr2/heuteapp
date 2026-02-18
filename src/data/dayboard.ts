@@ -3,20 +3,10 @@ import { UniqueData, Bounds, GridSize, assignDataWithId, DataWithoutId, ContentP
 export interface DayboardData extends UniqueData {
 }
 
-export interface DayboardGridData extends DayboardData {
-    size: GridSize;
-    bounds: Bounds;
-    contentPlacement?: Partial<ContentPlacement>;
-}
+//
 
 export interface DayboardLayoutData extends DayboardData {
     grids: DayboardGridData[];
-}
-
-//
-
-export function assignGrid(id: string, data: DataWithoutId<DayboardGridData>): DayboardGridData {
-    return assignDataWithId<DayboardGridData>(id, data);
 }
 
 export function assignLayout(id: string, data: DataWithoutId<DayboardLayoutData>): DayboardLayoutData {
@@ -31,4 +21,16 @@ export function assignLayout(id: string, data: DataWithoutId<DayboardLayoutData>
     }
 
     return layout;
+}
+
+//
+
+export interface DayboardGridData extends DayboardData {
+    size: GridSize;
+    bounds: Bounds;
+    contentPlacement?: Partial<ContentPlacement>;
+}
+
+export function assignGrid(id: string, data: DataWithoutId<DayboardGridData>): DayboardGridData {
+    return assignDataWithId<DayboardGridData>(id, data);
 }
