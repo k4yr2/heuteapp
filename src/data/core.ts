@@ -32,6 +32,12 @@ export interface Edges {
     left: number;
 }
 
+export enum Alignment {
+    Start = "start",
+    Center = "center",
+    End = "end",
+}
+
 //
 
 export interface HeuteObject {
