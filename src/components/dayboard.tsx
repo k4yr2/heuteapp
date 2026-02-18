@@ -82,27 +82,29 @@ type DayboardLayoutRegister = {
 const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
     function DayboardField(props, forwardedRef) {
         const context = useContext(DayboardContext);
+        const fieldRef = useRef<HTMLDivElement>(null);
+        
         const register = useRef<DayboardFieldRegister>({
+            fieldRef
         });
 
         if (!context) {
             throw new Error("DayboardField must be used within a DayboardContext.Provider");
         }
 
-        const ref = useRef<HTMLDivElement>(null);
         const data = props.data;
 
         useEffect(() => {
             const observer = new ResizeObserver(() => {
                 if(!context.dayboardRef.current) return;
-                if(!ref.current) return;
+                if(!fieldRef.current) return;
 
-                const gridElm = ref.current;
+                const gridElm = fieldRef.current;
                 const gridSize = gridElm.getBoundingClientRect();
                 const gridWidth = gridSize.width;
                 const gridHeight = gridSize.height;
 
-                const style = ref.current.style;
+                const style = fieldRef.current.style;
                 const possibleWidth = gridWidth / data.grid.cols;
                 const possibleHeight = gridHeight / data.grid.rows;
                 const fieldSize = Math.min(possibleWidth, possibleHeight);
@@ -124,7 +126,7 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
         }, [context.dayboardRef, data.grid.cols, data.grid.rows]);
 
         return (
-            <div ref={mergeRefs(forwardedRef, ref)} className={styles.field} style={{
+            <div ref={mergeRefs(forwardedRef, fieldRef)} className={styles.field} style={{
                 left: `${data.bounds.x1}%`,
                 top: `${data.bounds.y1}%`,
                 right: `${100 - data.bounds.x2}%`,
@@ -143,17 +145,22 @@ interface DayboardFieldProps {
 }
 
 type DayboardFieldRegister = {
+    fieldRef: React.RefObject<HTMLDivElement | null>;
 }
 
 //
 
 export const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
     function DayboardGrid(props, forwardedRef) {
-        const ref = useRef<HTMLDivElement>(null);
+        const gridRef = useRef<HTMLDivElement>(null);
+
+        const register = useRef<DayboardGridRegister>({
+            gridRef
+        });
         const data = props.data;
 
         return (
-            <div ref={mergeRefs(forwardedRef, ref)} className={styles.grid}>
+            <div ref={mergeRefs(forwardedRef, gridRef)} className={styles.grid}>
                 {Array.from({ length: data.cols * data.rows }).map((_, i) => (
                     <DayboardCell key={i} x={i % data.cols} y={Math.floor(i / data.cols)} />
                 ))} 
@@ -166,14 +173,22 @@ interface DayboardGridProps {
     data: DayboardGridData;
 }
 
+interface DayboardGridRegister {
+    gridRef: React.RefObject<HTMLDivElement | null>;
+}
+
 //
 
 export const DayboardCell = forwardRef<HTMLDivElement, DayboardCellProps>(
     function DayboardCell(props, forwardedRef) {
-        const ref = useRef<HTMLDivElement>(null);
+        const cellRef = useRef<HTMLDivElement>(null);
+
+        const register = useRef<DayboardCellRegister>({
+            cellRef
+        });
 
         return (
-            <div ref={mergeRefs(forwardedRef, ref)} className={styles.cell} />
+            <div ref={mergeRefs(forwardedRef, cellRef)} className={styles.cell} />
         );
     }
 );
@@ -181,4 +196,8 @@ export const DayboardCell = forwardRef<HTMLDivElement, DayboardCellProps>(
 interface DayboardCellProps {
     x: number;
     y: number;
+}
+
+interface DayboardCellRegister {
+    cellRef: React.RefObject<HTMLDivElement | null>;
 }
