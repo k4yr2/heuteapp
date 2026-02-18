@@ -1,5 +1,5 @@
 "use client";
-import { createContext, forwardRef, useContext, useEffect, useRef } from "react";
+import { createContext, forwardRef, use, useContext, useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
@@ -11,6 +11,10 @@ export default function Dayboard(props: DayboardProps) {
     const register = useRef<DayboardRegister>({
         ref,
         layout: null,
+    });
+
+    useLayoutEffect(() => {
+        register.current.layout = null;
     });
         
     const layout = props.data.layout;
@@ -44,19 +48,21 @@ type DayboardRegister = {
 
 const DayboardLayout = forwardRef<HTMLDivElement, DayboardLayoutProps>(
     function DayboardLayout(props, forwardedRef) {
-        const ref = useRef<HTMLDivElement>(null);
+        const context = useContext(DayboardContext)!;
 
+        const ref = useRef<HTMLDivElement>(null);
         const register = useRef<DayboardLayoutRegister>({
             ref,
             fields: null
         });
-
-        const context = useContext(DayboardContext)!;
-        const data = props.data;
-
-        useEffect(() => {
+        
+        useLayoutEffect(() => {
             context.layout = register.current;
-        }, []);
+            register.current.fields = [];
+
+        });
+
+        const data = props.data;
 
         return (
             <div ref={mergeRefs(forwardedRef, ref)} className={styles.layout}>
@@ -83,12 +89,17 @@ type DayboardLayoutRegister = {
 
 const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
     function DayboardField(props, forwardedRef) {
-        const context = useContext(DayboardContext);
+        const context = useContext(DayboardContext)!;
+
         const ref = useRef<HTMLDivElement>(null);
-        
         const register = useRef<DayboardFieldRegister>({
             ref,
             grids: null
+        });
+
+        useLayoutEffect(() => {
+            context.layout!.fields!.push(register.current);
+            register.current.grids = [];
         });
 
         if (!context) {
@@ -155,11 +166,17 @@ type DayboardFieldRegister = {
 
 export const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
     function DayboardGrid(props, forwardedRef) {
-        const ref = useRef<HTMLDivElement>(null);
 
+        const ref = useRef<HTMLDivElement>(null);
         const register = useRef<DayboardGridRegister>({
             ref
         });
+
+        useLayoutEffect(() => {
+            const field = useContext(DayboardContext)!.layout!.fields![0];
+            field.grids!.push(register.current);
+        });
+
         const data = props.data;
 
         return (
@@ -184,8 +201,8 @@ interface DayboardGridRegister {
 
 export const DayboardCell = forwardRef<HTMLDivElement, DayboardCellProps>(
     function DayboardCell(props, forwardedRef) {
-        const ref = useRef<HTMLDivElement>(null);
 
+        const ref = useRef<HTMLDivElement>(null);
         const register = useRef<DayboardCellRegister>({
             ref
         });
