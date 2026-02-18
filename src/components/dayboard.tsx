@@ -5,7 +5,7 @@ import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
 import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
 
-export default function Dayboard(props: DayboardProps) {
+function Dayboard(props: DayboardProps) {
     const [ref, ready] = useReadyRef<HTMLDivElement>();
 
     const register = useRef<DayboardRegister>({
@@ -35,14 +35,14 @@ interface DayboardProps {
     data: DayboardData;
 }
 
-//
-
 const DayboardContext = createContext<DayboardRegister | null>(null);
 
 type DayboardRegister = {
     ref : React.RefObject<HTMLDivElement | null>;
     layout: DayboardLayoutRegister | null;
 };
+
+export default Dayboard;
 
 //
 
