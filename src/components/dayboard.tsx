@@ -6,17 +6,17 @@ import { useReadyRef } from "../hooks";
 import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
 
 export default function Dayboard(props: DayboardProps) {
-    const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
+    const [ref, ready] = useReadyRef<HTMLDivElement>();
 
     const register = useRef<DayboardRegister>({
-        dayboardRef,
-        dayboardLayout: null,
+        ref,
+        layout: null,
     });
         
     const layout = props.data.layout;
 
     return (
-        <div ref={dayboardRef} className={styles.body}>
+        <div ref={ref} className={styles.body}>
             { 
                 ready &&
                 <DayboardContext.Provider value={register.current}>
@@ -36,29 +36,30 @@ interface DayboardProps {
 const DayboardContext = createContext<DayboardRegister | null>(null);
 
 type DayboardRegister = {
-    dayboardRef : React.RefObject<HTMLDivElement | null>;
-    dayboardLayout: DayboardLayoutRegister | null;
+    ref : React.RefObject<HTMLDivElement | null>;
+    layout: DayboardLayoutRegister | null;
 };
 
 //
 
 const DayboardLayout = forwardRef<HTMLDivElement, DayboardLayoutProps>(
     function DayboardLayout(props, forwardedRef) {
-        const layoutRef = useRef<HTMLDivElement>(null);
+        const ref = useRef<HTMLDivElement>(null);
 
         const register = useRef<DayboardLayoutRegister>({
-            layoutRef
+            ref,
+            fields: null
         });
 
         const context = useContext(DayboardContext)!;
         const data = props.data;
 
         useEffect(() => {
-            context.dayboardLayout = register.current;
+            context.layout = register.current;
         }, []);
 
         return (
-            <div ref={mergeRefs(forwardedRef, layoutRef)} className={styles.layout}>
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.layout}>
                 {
                     data.fields.map((field) => (
                         <DayboardField key={field.id} data={field}/>
@@ -74,7 +75,8 @@ type DayboardLayoutProps = {
 }
 
 type DayboardLayoutRegister = {
-    layoutRef: React.RefObject<HTMLDivElement | null>;
+    ref: React.RefObject<HTMLDivElement | null>;
+    fields: DayboardFieldRegister[] | null;
 }
 
 //
@@ -82,10 +84,11 @@ type DayboardLayoutRegister = {
 const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
     function DayboardField(props, forwardedRef) {
         const context = useContext(DayboardContext);
-        const fieldRef = useRef<HTMLDivElement>(null);
+        const ref = useRef<HTMLDivElement>(null);
         
         const register = useRef<DayboardFieldRegister>({
-            fieldRef
+            ref,
+            grids: null
         });
 
         if (!context) {
@@ -96,15 +99,14 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
 
         useEffect(() => {
             const observer = new ResizeObserver(() => {
-                if(!context.dayboardRef.current) return;
-                if(!fieldRef.current) return;
+                if(!ref.current) return;
 
-                const gridElm = fieldRef.current;
+                const gridElm = ref.current;
                 const gridSize = gridElm.getBoundingClientRect();
                 const gridWidth = gridSize.width;
                 const gridHeight = gridSize.height;
 
-                const style = fieldRef.current.style;
+                const style = ref.current.style;
                 const possibleWidth = gridWidth / data.grid.cols;
                 const possibleHeight = gridHeight / data.grid.rows;
                 const fieldSize = Math.min(possibleWidth, possibleHeight);
@@ -118,15 +120,15 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
                 style.setProperty("--cellSize", `${Math.floor(cellSize)}px`);
             });
 
-            observer.observe(context.dayboardRef.current!);
+            observer.observe(context.ref.current!);
 
             return () => {
                 observer.disconnect();
             };
-        }, [context.dayboardRef, data.grid.cols, data.grid.rows]);
+        }, []);
 
         return (
-            <div ref={mergeRefs(forwardedRef, fieldRef)} className={styles.field} style={{
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.field} style={{
                 left: `${data.bounds.x1}%`,
                 top: `${data.bounds.y1}%`,
                 right: `${100 - data.bounds.x2}%`,
@@ -145,22 +147,23 @@ interface DayboardFieldProps {
 }
 
 type DayboardFieldRegister = {
-    fieldRef: React.RefObject<HTMLDivElement | null>;
+    ref: React.RefObject<HTMLDivElement | null>;
+    grids: DayboardGridRegister[] | null;
 }
 
 //
 
 export const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
     function DayboardGrid(props, forwardedRef) {
-        const gridRef = useRef<HTMLDivElement>(null);
+        const ref = useRef<HTMLDivElement>(null);
 
         const register = useRef<DayboardGridRegister>({
-            gridRef
+            ref
         });
         const data = props.data;
 
         return (
-            <div ref={mergeRefs(forwardedRef, gridRef)} className={styles.grid}>
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.grid}>
                 {Array.from({ length: data.cols * data.rows }).map((_, i) => (
                     <DayboardCell key={i} x={i % data.cols} y={Math.floor(i / data.cols)} />
                 ))} 
@@ -174,21 +177,21 @@ interface DayboardGridProps {
 }
 
 interface DayboardGridRegister {
-    gridRef: React.RefObject<HTMLDivElement | null>;
+    ref: React.RefObject<HTMLDivElement | null>;
 }
 
 //
 
 export const DayboardCell = forwardRef<HTMLDivElement, DayboardCellProps>(
     function DayboardCell(props, forwardedRef) {
-        const cellRef = useRef<HTMLDivElement>(null);
+        const ref = useRef<HTMLDivElement>(null);
 
         const register = useRef<DayboardCellRegister>({
-            cellRef
+            ref
         });
 
         return (
-            <div ref={mergeRefs(forwardedRef, cellRef)} className={styles.cell} />
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.cell} />
         );
     }
 );
@@ -199,5 +202,5 @@ interface DayboardCellProps {
 }
 
 interface DayboardCellRegister {
-    cellRef: React.RefObject<HTMLDivElement | null>;
+    ref: React.RefObject<HTMLDivElement | null>;
 }
