@@ -12,8 +12,7 @@ function Dayboard(props: DayboardProps) {
         ref,
         layout: null,
     });
-    register.current.layout = null;
-        
+
     const layout = props.data.layout;
 
     return (
@@ -138,7 +137,7 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
                 style.setProperty("--cellSize", `${Math.floor(cellSize)}px`);
             });
 
-            observer.observe(layoutRegistry.ref.current!);
+            observer.observe(ref.current!);
             return () => {
                 observer.disconnect();
             };
@@ -228,7 +227,9 @@ export const DayboardCell = forwardRef<HTMLDivElement, DayboardCellProps>(
         });
 
         return (
-            <div ref={mergeRefs(forwardedRef, ref)} className={styles.cell} />
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.cell}>
+
+            </div>
         );
     }
 );
