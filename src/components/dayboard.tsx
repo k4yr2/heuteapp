@@ -4,7 +4,7 @@ import styles from "./dayboard.module.css";
 import mergeRefs from "merge-refs";
 import { useReadyRef } from "../hooks";
 import { heuteApp } from "@/src/heute/app";
-import { DayboardFieldData } from "@/src/data/dayboard";
+import { DayboardFieldData, DayboardGridData } from "@/src/data/dayboard";
 
 export default function Dayboard() {
     const [dayboardRef, ready] = useReadyRef<HTMLDivElement>();
@@ -126,12 +126,7 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
                 alignContent: data.grid?.alignContent || "center",
                 justifyItems: data.grid?.justifyContent || "center"
             }}>
-                <div className={styles.grid} style={{
-                }}>
-                    {Array.from({ length: data.grid.cols * data.grid.rows }).map((_, i) => (
-                        <div key={i} className={styles.cell} />
-                    ))} 
-                </div>
+                <DayboardGrid data={data.grid}/>
             </div>
         );
     }
@@ -142,4 +137,25 @@ interface DayboardFieldProps {
 }
 
 type DayboardFieldRegister = {
+}
+
+//
+
+export const DayboardGrid = forwardRef<HTMLDivElement, DayboardGridProps>(
+    function DayboardGrid(props, forwardedRef) {
+        const ref = useRef<HTMLDivElement>(null);
+        const data = props.data;
+
+        return (
+            <div ref={mergeRefs(forwardedRef, ref)} className={styles.grid}>
+                {Array.from({ length: data.cols * data.rows }).map((_, i) => (
+                    <div key={i} className={styles.cell} />
+                ))} 
+            </div>
+        );
+    }
+);
+
+interface DayboardGridProps {
+    data: DayboardGridData;
 }
