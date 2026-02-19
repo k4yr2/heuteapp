@@ -31,7 +31,7 @@
 }
 
 .cell {
-    border-radius: 20px;
+    border-radius: 10%;
     width: var(--cellSize);
     height: var(--cellSize);
     box-sizing: border-box;
