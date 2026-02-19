@@ -17,7 +17,7 @@ export class HeuteDayboard {
                     }),
                     assignField("second", {
                         bounds: { x1: 0, y1: 50, x2: 100, y2: 100 },
-                        grid: { cols: 15, rows: 4 }
+                        grid: { cols: 18, rows: 4 }
                     }),
                 ],
             })

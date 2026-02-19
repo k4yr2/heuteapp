@@ -8,9 +8,10 @@ export default function HeuteSidebar() {
     <Box id="heute-sidebar" className={styles.body}>
         <div className={styles.container}>
             <SidebarItem text="Home" />
+            <SidebarItem text="6x2" onMouse={() => heuteApp.cardSize = { cols: 6, rows: 2 }} />
+            <SidebarItem text="6x4" onMouse={() => heuteApp.cardSize = { cols: 6, rows: 4 }} />
             <SidebarItem text="3x2" onMouse={() => heuteApp.cardSize = { cols: 3, rows: 2 }} />
             <SidebarItem text="3x4" onMouse={() => heuteApp.cardSize = { cols: 3, rows: 4 }} />
-            <SidebarItem text="5x2" onMouse={() => heuteApp.cardSize = { cols: 5, rows: 2 }} />
         </div>
         <Divider orientation="vertical" flexItem />
     </Box>
