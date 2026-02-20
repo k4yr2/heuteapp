@@ -6,3 +6,5 @@ export interface DayboardFieldModel extends UniqueData {
     bounds: Bounds;
     placement?: Placement;
 }
+
+export default DayboardFieldModel;
