@@ -2,10 +2,10 @@
 import { createContext, forwardRef, useContext, useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./dayboard.module.css";
 import { mergeRefs } from "@/src/utility";
-import { useReadyRef } from "../hooks";
+import { useReadyRef } from "@/src/hooks";
 import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
-import { GridSize } from "../data/core";
-import { heuteApp } from "../heute/app";
+import { GridSize } from "@/src/data/core";
+import { heuteApp } from "@/src/app";
 
 function Dayboard(props: DayboardProps) {
     const [ref, ready] = useReadyRef<HTMLDivElement>();

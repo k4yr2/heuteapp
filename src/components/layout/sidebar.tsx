@@ -1,7 +1,7 @@
 "use client";
 import { Box, Divider } from '@mui/material';
 import styles from './sidebar.module.css';
-import { heuteApp } from '@/src/heute/app';
+import { heuteApp } from '@/src/app';
 
 export default function HeuteSidebar() {
   return (
