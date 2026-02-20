@@ -1,6 +1,6 @@
 import Dayboard from "@/src/ui/components/dayboard";
 import styles from "./page.module.css";
-import HeuteDomain from "@/src/library/core";
+import HeuteDomain from "@/src/library/core/domain";
 
 const heuteApp = new HeuteDomain();
 
