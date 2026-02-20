@@ -1,4 +1,4 @@
-import { UniqueData, Bounds, Placement } from "@/src/library/base";
+import { UniqueData, Bounds, Placement, DataWithoutId, assignDataWithId } from "@/src/library/base";
 import BoardGridModel from "./boardGrid";
 
 export interface BoardFieldModel extends UniqueData {
@@ -8,3 +8,7 @@ export interface BoardFieldModel extends UniqueData {
 }
 
 export default BoardFieldModel;
+
+export function boardField(id: string, data: DataWithoutId<BoardFieldModel>): BoardFieldModel {
+    return assignDataWithId<BoardFieldModel>(id, data);
+}
