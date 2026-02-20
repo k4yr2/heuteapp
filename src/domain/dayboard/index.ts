@@ -1,5 +1,5 @@
 import { assignLayout, assignField } from "@/src/data/dayboard";
-import { HeuteDayboardLayouts } from "./dayboardLayouts";
+import { HeuteDayboardLayouts } from "./layouts";
 
 export class HeuteDayboard {
     #layouts : HeuteDayboardLayouts;
