@@ -1,4 +1,4 @@
-import { GridSize, UniqueData, Bounds, assignDataWithId, DataWithoutId, Placement } from "./core";
+import { GridSize, UniqueData, Bounds, assignDataWithId, DataWithoutId, Placement } from "@/src/library/base";
 
 export interface DayboardData {
     layout: DayboardLayoutData;

@@ -4,7 +4,7 @@ import styles from "./dayboard.module.css";
 import { mergeRefs } from "@/src/utility";
 import { useReadyRef } from "@/src/hooks";
 import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
-import { GridSize } from "@/src/data/core";
+import { GridSize } from "@/src/library/base";
 
 function Dayboard(props: DayboardProps) {
     const [ref, ready] = useReadyRef<HTMLDivElement>();
