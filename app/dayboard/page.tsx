@@ -1,4 +1,4 @@
-import Dayboard from "@/src/components/dayboard";
+import Dayboard from "@/src/ui/components/dayboard";
 import styles from "./page.module.css";
 import HeuteDomain from "@/src/library/main";
 
