@@ -1,6 +1,6 @@
 import HeuteBoard from "./board";
 
-class HeuteDomain {
+export default class {
     #dayboard : HeuteBoard;
 
     constructor() {
@@ -11,5 +11,3 @@ class HeuteDomain {
         return this.#dayboard;
     }
 }
-
-export const heuteApp = new HeuteDomain();
