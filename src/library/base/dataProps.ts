@@ -1,8 +1,6 @@
-import UniqueData from "./uniqueData";
+import type { UniqueData } from "./uniqueData";
 
 export type DataProps<T extends UniqueData> = Omit<T, "id">;
-
-export default DataProps;
 
 export function createData<T extends UniqueData>(props: DataProps<T>, genId?: () => string): T {
     const id = genId ? genId() : crypto.randomUUID();

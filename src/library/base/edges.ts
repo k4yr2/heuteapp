@@ -4,5 +4,3 @@ export interface Edges {
     bottom: number;
     left: number;
 }
-
-export default Edges;
