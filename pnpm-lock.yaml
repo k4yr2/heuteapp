@@ -20,8 +20,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@heuteapp/models':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.3
+        version: 0.1.3
       '@mui/material':
         specifier: ^7.3.8
         version: 7.3.8(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.3))(@types/react@19.2.14)(react@19.2.3))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -247,8 +247,8 @@ packages:
   '@heuteapp/core@0.1.2':
     resolution: {integrity: sha512-TlWsWjiot3cweHNHwtW13IGAgKk+LAo4Mbol4ByIE8CP20LmNTWbr5nUCXUnn9CmcV/k86TDaY0P3mIfH6TXOg==}
 
-  '@heuteapp/models@0.1.2':
-    resolution: {integrity: sha512-WCnhv2d6f835xpg0gwuOpZmrz7FcUtB4Eo2zUvYNS3Zl4NSBmVx3lz1gVZJA2wqoSau6KE+7RkZY/WP/gt9UEA==}
+  '@heuteapp/models@0.1.3':
+    resolution: {integrity: sha512-CjXfMOOHixfRLnQwPSbrQP6u7tjMEO7CY2+dJWrRLi/Mv78wGH8BkrjrNo3ooXFhp4r/7hwcYKXkSAzQD3FpMw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2237,7 +2237,7 @@ snapshots:
 
   '@heuteapp/core@0.1.2': {}
 
-  '@heuteapp/models@0.1.2':
+  '@heuteapp/models@0.1.3':
     dependencies:
       '@heuteapp/common': 0.1.3
 
