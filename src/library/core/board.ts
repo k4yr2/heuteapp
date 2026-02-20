@@ -1,4 +1,4 @@
-import { assignLayout, assignField } from "@/src/data/dayboard";
+import { boardLayout, boardField } from "@/src/library/models";
 import HeuteBoardLayouts from "./boardLayouts";
 
 export class HeuteBoard {
@@ -8,14 +8,14 @@ export class HeuteBoard {
         this.#layouts = new HeuteBoardLayouts();
 
         this.#layouts.add(
-            assignLayout("default", {
+            boardLayout("default", {
                 fields: [
-                    assignField("first", {
+                    boardField("first", {
                         bounds: { x1: 0, y1: 0, x2: 100, y2: 50 },
                         grid: { cols: 18, rows: 4 }
 
                     }),
-                    assignField("second", {
+                    boardField("second", {
                         bounds: { x1: 0, y1: 50, x2: 100, y2: 100 },
                         grid: { cols: 18, rows: 4 }
                     }),
