@@ -1,14 +1,13 @@
-import { GridSize } from "../data/core";
-import { HeuteDayboard } from "./dayboard";
+import HeuteBoard from "./board";
 
 class HeuteDomain {
-    #dayboard : HeuteDayboard;
+    #dayboard : HeuteBoard;
 
     constructor() {
-        this.#dayboard = new HeuteDayboard();
+        this.#dayboard = new HeuteBoard();
     }
 
-    public get dayboard(): HeuteDayboard {
+    public get dayboard(): HeuteBoard {
         return this.#dayboard;
     }
 }

@@ -1,6 +1,6 @@
 import { DayboardLayoutData } from "@/src/data/dayboard";
 
-export class HeuteDayboardLayouts {
+export default class {
     #cache = new Map<string, DayboardLayoutData>();
 
     public add(...layouts: DayboardLayoutData[]) {
