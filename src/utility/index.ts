@@ -1,4 +1,7 @@
 import clampNumber from "./clampNumber";
+import mergeRefs from "./mergeRefs"
 
-export { mergeRefs } from "./mergeRefs";
-export { clampNumber };
+export { 
+    mergeRefs, 
+    clampNumber 
+};
