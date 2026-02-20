@@ -1,4 +1,4 @@
-import { GridSize } from "@/src/library/base";
+import { GridSize } from "@heuteapp/common";
 
 export interface BoardGridModel extends GridSize {
 }

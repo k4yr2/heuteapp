@@ -1,4 +1,4 @@
-import { UniqueData, Bounds, Placement, DataProps, createDataWithId } from "@/src/library/base";
+import { UniqueData, Bounds, Placement, DataProps, createDataWithId } from "@heuteapp/common";
 import { BoardGridModel } from "./boardGrid";
 
 export interface BoardFieldModel extends UniqueData {
