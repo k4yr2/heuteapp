@@ -1,6 +1,6 @@
 {
   "name": "@heuteapp/models",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,6 @@
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
-    "@heuteapp/common": "^0.1.2"
+    "@heuteapp/common": "^0.1.3"
   }
 }
