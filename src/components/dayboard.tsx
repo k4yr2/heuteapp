@@ -5,7 +5,6 @@ import { mergeRefs } from "@/src/utility";
 import { useReadyRef } from "@/src/hooks";
 import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
 import { GridSize } from "@/src/data/core";
-import { heuteApp } from "@/src/app";
 
 function Dayboard(props: DayboardProps) {
     const [ref, ready] = useReadyRef<HTMLDivElement>();
@@ -238,7 +237,7 @@ function mouseToGridCell(e: React.MouseEvent, size: GridSize) {
         }
 
         function mouseMove(e: React.MouseEvent) {
-                const cardSize = heuteApp.cardSize;
+                const cardSize = { cols: 3, rows: 2 }; // Default card size for demo purposes
                 const point = mouseToGridCell(e, cardSize);
 
                 if (point) {

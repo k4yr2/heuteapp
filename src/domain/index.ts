@@ -1,9 +1,8 @@
 import { GridSize } from "../data/core";
 import { HeuteDayboard } from "./dayboard";
 
-class HeuteApp {
+class HeuteDomain {
     #dayboard : HeuteDayboard;
-    cardSize : GridSize = { cols: 3, rows: 2 };
 
     constructor() {
         this.#dayboard = new HeuteDayboard();
@@ -14,4 +13,4 @@ class HeuteApp {
     }
 }
 
-export const heuteApp = new HeuteApp();
+export const heuteApp = new HeuteDomain();

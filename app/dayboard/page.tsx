@@ -1,6 +1,6 @@
 import Dayboard from "@/src/components/dayboard";
 import styles from "./page.module.css";
-import { heuteApp } from "@/src/app";
+import { heuteApp } from "@/src/domain";
 
 export default function DayboardPage() {
   const layout = heuteApp.dayboard.layouts.get("default")!;
