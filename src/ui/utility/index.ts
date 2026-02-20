@@ -1,5 +1,1 @@
-import mergeRefs from "./mergeRefs"
-
-export { 
-    mergeRefs
-};
+export { mergeRefs } from "./mergeRefs"

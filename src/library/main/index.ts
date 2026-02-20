@@ -1,6 +1,6 @@
 import HeuteBoard from "./board";
 
-export default class {
+export class HeuteDomain {
     #dayboard : HeuteBoard;
 
     constructor() {
@@ -11,3 +11,5 @@ export default class {
         return this.#dayboard;
     }
 }
+
+export default HeuteDomain;

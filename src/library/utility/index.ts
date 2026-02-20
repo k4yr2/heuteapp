@@ -1,5 +1,1 @@
-import { default as clampNumber } from "./clampNumber";
-
-export { 
-    clampNumber 
-};
+export { clampNumber } from "./clampNumber";
