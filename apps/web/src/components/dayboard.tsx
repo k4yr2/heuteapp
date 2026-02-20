@@ -1,8 +1,8 @@
 "use client";
 import { createContext, forwardRef, useContext, useEffect, useLayoutEffect, useRef } from "react";
 import styles from "@/src/ui/styles/dayboard.module.css";
-import { mergeRefs } from "@/src/ui/utility";
-import { useReadyRef } from "@/src/ui/hooks";
+import { mergeRefs } from "@/src/utility";
+import { useReadyRef } from "@/src/hooks";
 import { BoardModel, BoardFieldModel, BoardGridModel, BoardLayoutModel } from "@heuteapp/models";
 import { GridSize } from "@heuteapp/common";
 
