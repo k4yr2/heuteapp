@@ -1,7 +1,7 @@
 import { assignLayout, assignField } from "@/src/data/dayboard";
 import HeuteBoardLayouts from "./layouts";
 
-export default class {
+export class HeuteBoard {
     #layouts : HeuteBoardLayouts;
 
     constructor() {
@@ -28,3 +28,5 @@ export default class {
         return this.#layouts;
     }
 }
+
+export default HeuteBoard;
