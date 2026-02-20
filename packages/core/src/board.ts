@@ -1,5 +1,5 @@
 import { boardLayout, boardField } from "@/src/library/models";
-import HeuteBoardLayouts from "./boardLayouts";
+import HeuteBoardLayouts from "../boardLayouts";
 
 export class HeuteBoard {
     #layouts : HeuteBoardLayouts;
