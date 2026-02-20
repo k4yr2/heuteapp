@@ -3,8 +3,8 @@ import { createContext, forwardRef, useContext, useEffect, useLayoutEffect, useR
 import styles from "@/src/ui/styles/dayboard.module.css";
 import { mergeRefs } from "@/src/ui/utility";
 import { useReadyRef } from "@/src/ui/hooks";
-import { DayboardData, DayboardFieldData, DayboardGridData, DayboardLayoutData } from "@/src/data/dayboard";
-import { GridSize } from "@/src/library/base";
+import { BoardModel, BoardFieldModel, BoardGridModel, BoardLayoutModel } from "@heuteapp/models";
+import { GridSize } from "@heuteapp/common";
 
 function Dayboard(props: DayboardProps) {
     const [ref, ready] = useReadyRef<HTMLDivElement>();
@@ -29,7 +29,7 @@ function Dayboard(props: DayboardProps) {
 }
 
 interface DayboardProps {
-    data: DayboardData;
+    data: BoardModel;
 }
 
 const DayboardContext = createContext<DayboardRegister | null>(null);
@@ -81,7 +81,7 @@ const DayboardLayout = forwardRef<HTMLDivElement, DayboardLayoutProps>(
 );
 
 type DayboardLayoutProps = {
-    data: DayboardLayoutData
+    data: BoardLayoutModel
 }
 
 const DayboardLayoutContext = createContext<DayboardLayoutRegister | null>(null);
@@ -162,7 +162,7 @@ const DayboardField = forwardRef<HTMLDivElement, DayboardFieldProps>(
 );
 
 interface DayboardFieldProps {
-    data: DayboardFieldData;
+    data: BoardFieldModel;
 }
 
 const DayboardFieldContext = createContext<DayboardFieldRegister | null>(null);
@@ -291,7 +291,7 @@ function mouseToGridCell(e: React.MouseEvent, size: GridSize) {
 );
 
 interface DayboardGridProps {
-    data: DayboardGridData;
+    data: BoardGridModel;
 }
 
 const DayboardGridContext = createContext<DayboardGridRegister | null>(null);
