@@ -1,4 +1,4 @@
-import { UniqueData } from "@heuteapp/common";
+import { DataProps, UniqueData } from "@heuteapp/common";
 
 export interface BoardCardModel extends UniqueData {
     sectionId: string;
@@ -6,3 +6,12 @@ export interface BoardCardModel extends UniqueData {
 }
 
 export default BoardCardModel;
+
+//
+
+export function boardCard(id: string, props: DataProps<BoardCardModel>): BoardCardModel {
+    return {
+        id,
+        ...props
+    };
+}
