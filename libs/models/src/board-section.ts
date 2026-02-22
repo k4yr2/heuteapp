@@ -5,6 +5,6 @@ export interface BoardSectionModel extends GridSize, UniqueData {
     placement?: Placement;
 }
 
-export function boardField(id: string, props: DataProps<BoardSectionModel>): BoardSectionModel {
+export function boardSection(id: string, props: DataProps<BoardSectionModel>): BoardSectionModel {
     return createDataWithId<BoardSectionModel>(id, props);
 }

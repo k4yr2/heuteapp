@@ -2,7 +2,7 @@ import { createDataWithId, DataProps, UniqueData } from "@heuteapp/common";
 import { BoardSectionModel } from "./board-section";
 
 export interface BoardLayoutModel extends UniqueData {
-    fields: BoardSectionModel[];
+    sections: BoardSectionModel[];
 }
 
 export function boardLayout(id: string, props: DataProps<BoardLayoutModel>): BoardLayoutModel {
