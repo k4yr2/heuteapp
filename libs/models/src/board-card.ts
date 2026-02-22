@@ -1,9 +1,9 @@
-import { createDataWithId, DataProps, GridPoint, UniqueData } from "@heuteapp/common";
+import { createDataWithId, DataProps, GridRect, UniqueData } from "@heuteapp/common";
 
 export interface BoardCardModel extends UniqueData {
     sectionId: string;
     content: string;
-    position: GridPoint;
+    position: GridRect;
 }
 
 export default BoardCardModel;
