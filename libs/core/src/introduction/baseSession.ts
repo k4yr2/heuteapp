@@ -1,5 +1,9 @@
-abstract class BaseSession {
+export abstract class BaseSession {
     #isActive = false;
+
+    public get isActive(): boolean {
+        return this.#isActive;
+    }
 
     start() {
         if (this.#isActive) {
@@ -14,7 +18,7 @@ abstract class BaseSession {
         if (!this.#isActive) {
             throw new Error('Session is not active')
         }
-        
+
         this.onDispose()
         this.#isActive = false
     }
@@ -22,3 +26,5 @@ abstract class BaseSession {
     protected abstract onStart(): void
     protected abstract onDispose(): void
 }
+
+export default BaseSession;
