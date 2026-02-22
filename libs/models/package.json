@@ -11,6 +11,6 @@
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
-    "@heuteapp/common": "^0.1.3"
+    "@heuteapp/common": "^0.1.4"
   }
 }
