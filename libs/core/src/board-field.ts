@@ -1,7 +1,7 @@
 import HeuteBoardLayout from "./board-layout";
 
 export class HeuteBoardField {
-    #layout: HeuteBoardLayout;
+    readonly #layout: HeuteBoardLayout;
 
     constructor(layout: HeuteBoardLayout) {
         this.#layout = layout;
