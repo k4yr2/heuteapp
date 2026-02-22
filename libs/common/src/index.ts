@@ -1,5 +1,7 @@
 export type { Point } from "./point";
 export type { Size } from "./size";
+export type { GridPoint } from "./grid-point";
+export type { GridPlacement } from "./grid-placement";
 export type { GridRect } from "./grid-rect";
 export type { GridSize } from "./grid-size";
 export type { Rect } from "./rect";
