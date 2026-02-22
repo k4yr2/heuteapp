@@ -1,20 +1,18 @@
-import { Placement, Rect } from "@heuteapp/common";
+import { GridSize, Placement, Rect } from "@heuteapp/common";
 import { HeuteBoardLayout } from "./board-layout";
 
 export class HeuteBoardSection {
     readonly #id : string;
     readonly #layout : HeuteBoardLayout;
 
-    #cols : number;
-    #rows : number;
+    #size: GridSize;
     #position : Rect;
     #placement : Placement = { horizontal: "center", vertical: "center" };
 
     constructor(id: string, layout: HeuteBoardLayout, cols: number, rows: number, position: Rect) {        
         this.#id = id;
         this.#layout = layout;
-        this.#cols = cols;
-        this.#rows = rows;
+        this.#size = { cols, rows };
         this.#position = position;
     }
 
@@ -28,12 +26,8 @@ export class HeuteBoardSection {
 
     //
 
-    public get cols() : number {
-        return this.#cols;
-    }
-
-    public get rows() : number {
-        return this.#rows;
+    public get size() : GridSize {
+        return this.#size;
     }
 
     public get position() : Rect {
@@ -46,17 +40,16 @@ export class HeuteBoardSection {
 
     //
 
-    public resize(cols: number, rows: number) {
-        this.#cols = cols;
-        this.#rows = rows;
+    public setSize(cols: number, rows: number) {
+        this.#size = Object.freeze({ cols, rows });
     }
 
-    public move(position: Rect) {
-        this.#position = position;
+    public setPosition(position: Rect) {
+        this.#position = Object.freeze({ ...position });
     }
 
     public setPlacement(placement: Placement) {
-        this.#placement = placement;
+        this.#placement = Object.freeze({ ...placement});
     }
 }
 
