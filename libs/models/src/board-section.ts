@@ -1,7 +1,7 @@
-import { GridSize, UniqueData, Bounds, Placement, DataProps, createDataWithId } from "@heuteapp/common";
+import { GridSize, UniqueData, Rect, Placement, DataProps, createDataWithId } from "@heuteapp/common";
 
 export interface BoardSectionModel extends GridSize, UniqueData {
-    bounds: Bounds;
+    position: Rect;
     placement?: Placement;
 }
 

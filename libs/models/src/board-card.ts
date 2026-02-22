@@ -1,8 +1,9 @@
-import { createDataWithId, DataProps, UniqueData } from "@heuteapp/common";
+import { createDataWithId, DataProps, Rect, UniqueData } from "@heuteapp/common";
 
 export interface BoardCardModel extends UniqueData {
     sectionId: string;
     content: string;
+    position: Rect;
 }
 
 export default BoardCardModel;
