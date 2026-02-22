@@ -6,6 +6,10 @@
   "scripts": {
     "prepublishOnly": "tsc"
   },
+  "exports": {
+    ".": "./dist/main/index.js",
+    "./introduction": "./dist/introduction/index.js"
+  },
   "keywords": [],
   "author": "k4yr2",
   "license": "MIT",
