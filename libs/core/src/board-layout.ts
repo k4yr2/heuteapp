@@ -2,12 +2,20 @@ import { HeuteBoard } from "./board";
 import HeuteBoardField from "./board-field";
 
 export class HeuteBoardLayout {
+    #id: string;
     #board: HeuteBoard;
     #fields: HeuteBoardLayout_Fields;
     
-    constructor(board: HeuteBoard) {
+    constructor(id: string, board: HeuteBoard) {
+        this.#id = id;
         this.#board = board;
         this.#fields = new HeuteBoardLayout_Fields();
+    }
+
+    //
+
+    public get id() {
+        return this.#id;
     }
 
     public get board(): HeuteBoard {
