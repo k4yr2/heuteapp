@@ -1,14 +1,14 @@
-import { HeuteBoard } from "./board";
+import { HeuteBoardSection } from "./board-section";
 
 export class HeuteBoardCard {
-    #board: HeuteBoard;
+    #section: HeuteBoardSection;
 
-    constructor(board: HeuteBoard) {
-        this.#board = board;
+    constructor(section: HeuteBoardSection) {
+        this.#section = section;
     }
 
-    public get board(): HeuteBoard {
-        return this.#board;
+    public get section(): HeuteBoardSection {
+        return this.#section;
     }
 }
 
