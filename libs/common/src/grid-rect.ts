@@ -1,8 +1,7 @@
-export interface GridRect {
-    col: number;
-    row: number;
-    colSpan: number;
-    rowSpan: number;
+import { GridPlacement } from "./grid-placement";
+import { GridPoint } from "./grid-point";
+
+export interface GridRect extends GridPoint, GridPlacement {
 }
 
 export default GridRect;
