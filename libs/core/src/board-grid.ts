@@ -1,16 +1,13 @@
 import { HeuteBoardField } from "./board-field";
-import HeuteBoardLayout from "./board-layout";
 
 export class HeuteBoardGrid {
     readonly #field: HeuteBoardField;
-    readonly #layout: HeuteBoardLayout
 
     readonly #cols: number;
     readonly #rows: number;
 
     constructor(field: HeuteBoardField, cols: number, rows: number) {
         this.#field = field;
-        this.#layout = field.layout;
         
         this.#cols = cols;
         this.#rows = rows;
@@ -20,10 +17,6 @@ export class HeuteBoardGrid {
 
     public get field() {
         return this.#field;
-    }
-
-    public get layout() {
-        return this.#layout;
     }
 
     //
@@ -38,10 +31,3 @@ export class HeuteBoardGrid {
 }
 
 export default HeuteBoardGrid;
-
-//
-
-export interface HeuteBoardGridProps {
-    cols: number;
-    rows: number;
-}
